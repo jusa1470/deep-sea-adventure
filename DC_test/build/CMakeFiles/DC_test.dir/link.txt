@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/DC_test.dir/Users/denverchernin/Desktop/Personal/deep-sea-adventure/DC_test/src/main.cpp.o -o DC_test 

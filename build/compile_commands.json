@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/denverchernin/Desktop/Personal/deep-sea-adventure/build",
+  "command": "/usr/bin/clang++   -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -o CMakeFiles/DC_test.dir/main.cpp.o -c /Users/denverchernin/Desktop/Personal/deep-sea-adventure/main.cpp",
+  "file": "/Users/denverchernin/Desktop/Personal/deep-sea-adventure/main.cpp"
+}
+]
