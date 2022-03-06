@@ -32,5 +32,5 @@
 *.app
 
 # CMake files
-build/*.cmake
+build/*
 !build/CMakeLists.txt
