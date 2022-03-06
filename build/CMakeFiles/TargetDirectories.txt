@@ -1,6 +1,0 @@
-/Users/juliasanford/Desktop/deep-sea-adventure/build/CMakeFiles/DSA.exe.dir
-/Users/juliasanford/Desktop/deep-sea-adventure/build/CMakeFiles/package.dir
-/Users/juliasanford/Desktop/deep-sea-adventure/build/CMakeFiles/edit_cache.dir
-/Users/juliasanford/Desktop/deep-sea-adventure/build/CMakeFiles/rebuild_cache.dir
-/Users/juliasanford/Desktop/deep-sea-adventure/build/CMakeFiles/package_source.dir
-/Users/juliasanford/Desktop/deep-sea-adventure/build/CMakeFiles/test.exe.dir
