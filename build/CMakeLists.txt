@@ -16,7 +16,7 @@ set(MAIN_SOURCES "../app/src/GameMechanics.cpp"
                  "../app/src/Tile.cpp")
 
 add_executable(DSA.exe ../main/main.cpp ${MAIN_SOURCES})
-add_executable(test.exe ../app/test/mainTests.cpp ${TEST_SOURCES})
+add_executable(test.exe ../app/test/mainTests.cpp ${TEST_SOURCES} ${MAIN_SOURCES})
 
 include_directories(${GTEST_INCLUDE_DIRS} ../app/include)
 target_link_libraries(test.exe ${GTEST_LIBRARIES} pthread)
