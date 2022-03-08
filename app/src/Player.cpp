@@ -2,15 +2,15 @@
 #include <algorithm>
 
 Player::Player(std::string name_, std::string color_){
-    name = name_;
-    color = color_;
-    SDLSetup setup = SDLSetup::getInstance();
+    this->name = name_;
+    this->color = color_;
+    this->sdlSetup = SDLSetup::getInstance();
 }
 
 Player::~Player(){}
 
 void Player::setName(std::string name_){
-    name = name_;
+    this->name = name_;
 }
 
 std::string Player::getName(){
@@ -18,7 +18,7 @@ std::string Player::getName(){
 }
 
 void Player::setColor(std::string color_){
-    color = color_;
+    this->color = color_;
 }
 
 std::string Player::getColor(){
@@ -50,6 +50,9 @@ void Player::removeTreasure(Tile* tile){
 }
 
 void Player::removeAllTreasure(){
+    for(auto item: this->treasure){
+        delete item;
+    }
     treasure.clear();
 }
 
@@ -59,5 +62,5 @@ void Player::setLocation(int i, int j){
 }
 
 void Player::setTurnBack(bool turnback_){
-    turnback = turnback_;
+    this->turnback = turnback_;
 }
