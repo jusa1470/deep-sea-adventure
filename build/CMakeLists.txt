@@ -4,16 +4,9 @@ project(DSA VERSION 0.0.1)
 find_package(GTest REQUIRED)
 
 set(CMAKE_CXX_STANDARD 11)
-set(TEST_SOURCES "../app/test/GameMechanicsTests.cpp"
-                 "../app/test/PathTests.cpp"
-                 "../app/test/PlayerTests.cpp"
-                 "../app/test/SDLSetupTests.cpp"
-                 "../app/test/TileTests.cpp")
-set(MAIN_SOURCES "../app/src/GameMechanics.cpp"
-                 "../app/src/Path.cpp"
-                 "../app/src/Player.cpp"
-                 "../app/src/SDLSetup.cpp"
-                 "../app/src/Tile.cpp")
+
+file(GLOB TEST_SOURCES "../app/test/*.cpp")
+file(GLOB MAIN_SOURCES "../app/src/*.cpp")
 
 add_executable(DSA.exe ../main/main.cpp ${MAIN_SOURCES})
 add_executable(test.exe ../app/test/mainTests.cpp ${TEST_SOURCES} ${MAIN_SOURCES})

@@ -34,3 +34,6 @@
 # CMake files
 build/*
 !build/CMakeLists.txt
+
+# vscode
+.vscode/*
