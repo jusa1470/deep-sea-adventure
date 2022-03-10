@@ -1,3 +1,5 @@
+#ifndef __SDLSetup__
+#define __SDLSetup__
 class SDLSetup {
     public:
         static SDLSetup* getInstance()
@@ -10,3 +12,5 @@ class SDLSetup {
         SDLSetup(SDLSetup const&);
         void operator=(SDLSetup const&);
 };
+
+#endif
