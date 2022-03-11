@@ -1,9 +1,12 @@
 #include <Path.h>
 #include <iostream>
 
+Path* Path::instance{nullptr};
+std::mutex Path::mutex;
+
 Path::Path(){
     this->path = generateNewPath();
-    this->sdlSetup = SDLSetup::getInstance();
+    // this->sdlSetup = SDLSetup::getInstance();
 }
 
 Path::~Path(){
@@ -14,8 +17,13 @@ Path::~Path(){
     this->path.clear();
 }
 
-void Path::updatePath(){
-
+Path* Path::getInstance(){
+    mutex.lock();
+    if(instance == nullptr){
+        instance = new Path();
+    }
+    mutex.unlock();
+    return instance;
 }
 
 void Path::setPath(std::vector<Tile *> path_){
@@ -34,10 +42,6 @@ Tile* Path::replaceTile(int i, Tile* tile){
     Tile *old = this->path[i];
     this->path[i] = tile;
     return old;
-}
-
-void Path::removeInstance(){
-
 }
 
 std::vector<Tile*> Path::generateNewPath(){
