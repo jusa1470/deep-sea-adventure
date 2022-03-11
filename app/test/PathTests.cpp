@@ -48,14 +48,17 @@ TEST_F(PathTests, getTileTest) {
 
     Tile *tile2 = path->getTile(28);
     EXPECT_EQ(4, tile2->getDots());
-    EXPECT_GE(tile2->getValue(), 9);
+    EXPECT_GE(tile2->getValue(), 12);
     EXPECT_LE(tile2->getValue(), 15);
 }
 
 TEST_F(PathTests, replaceTileTest) {
     Tile *replaceTile = new Tile(4, 14);
-    path->replaceTile(3, replaceTile);
+    Tile *oldTile = path->replaceTile(3, replaceTile);
     Tile *pathTile = path->getTile(3);
     EXPECT_EQ(4, pathTile->getDots());
     EXPECT_EQ(14, pathTile->getValue());
+    EXPECT_EQ(1, oldTile->getDots());
+    EXPECT_GE(oldTile->getValue(), 0);
+    EXPECT_LE(oldTile->getValue(), 3);
 }

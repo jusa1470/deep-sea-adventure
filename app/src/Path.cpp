@@ -3,9 +3,16 @@
 
 Path::Path(){
     this->path = generateNewPath();
+    this->sdlSetup = SDLSetup::getInstance();
 }
 
-Path::~Path(){}
+Path::~Path(){
+    for(int i = 0; i < this->path.size(); i++){
+        delete this->path[i];
+        this->path[i] = nullptr;
+    }
+    this->path.clear();
+}
 
 void Path::updatePath(){
 
@@ -23,8 +30,10 @@ Tile* Path::getTile(int i){
     return this->path[i];
 }
 
-void Path::replaceTile(int i, Tile* tile){
+Tile* Path::replaceTile(int i, Tile* tile){
+    Tile *old = this->path[i];
     this->path[i] = tile;
+    return old;
 }
 
 void Path::removeInstance(){
@@ -34,6 +43,8 @@ void Path::removeInstance(){
 std::vector<Tile*> Path::generateNewPath(){
     std::vector<Tile *> path; 
     for(int i = 0; i < 8; i++){
+        //random number is: num % (max + 1 - min) + min
+        //this sets the correct bounds for each of the dotted tiles
         path.push_back(new Tile(1, std::rand() % (3 + 1 - 0)));
     }
     for(int i = 0; i < 8; i++){

@@ -14,11 +14,13 @@ class Path {
         }
         Path();
         ~Path();
+        Path(Path const&) = delete;
+        void operator=(Path const&) = delete;
         void updatePath();
         void setPath(std::vector<Tile *> path_);
         std::vector<Tile *> getPath();
         Tile* getTile(int i);
-        void replaceTile(int i, Tile* tile);
+        Tile* replaceTile(int i, Tile* tile);
         void removeInstance();
 
     private:
