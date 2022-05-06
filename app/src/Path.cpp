@@ -6,7 +6,6 @@ std::mutex Path::mutex;
 
 Path::Path(){
     this->path = generateNewPath();
-    // this->sdlSetup = SDLSetup::getInstance();
 }
 
 Path::~Path(){
