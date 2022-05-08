@@ -15,19 +15,19 @@ class GameMechanics {
         int rollDice();
         void replaceTile(bool replace); 
         int endTurn();
-        void addPlayer(string name, string color);
-        std::vector<Player> getPlayers();
-        void setPlayers(std::vector<Player> players_);
+        void addPlayer(std::string name, std::string color);
+        std::vector<Player*> getPlayers();
+        void setPlayers(std::vector<Player*> players_);
         int getCurrPlayerIndex();
         void setCurrPlayerIndex(int currPlayerIndex_);
         Path* getPath();
         void setPath(Path* path_);
 
     private:
-        std::vector<Player> players;
+        std::vector<Player*> players;
         int currPlayerIndex;
         Path *path;
-        SDLSetup *sdlSetup
+        SDLSetup *sdlSetup;
 };
 
 #endif

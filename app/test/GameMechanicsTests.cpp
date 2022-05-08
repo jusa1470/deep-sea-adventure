@@ -3,9 +3,11 @@
 #include <Player.h>
 
 class GameMechanicsTests : public ::testing::Test {
-    GameMechanics *mechanics;
+    public:
+        GameMechanics *mechanics;
+
     void SetUp() {
-        mechanics = new GameMechanics;
+        mechanics = new GameMechanics();
     }
     void TearDown() {
         delete mechanics;
@@ -37,39 +39,39 @@ TEST_F(GameMechanicsTests, testAddPlayer) {
 
 TEST_F(GameMechanicsTests, testMovePlayer){
     // ** vector of test distances to move
-    std::vector<int> distances = {2, 2, 4, 6}
+    std::vector<int> distances = {2, 2, 4, 6};
 
     // ** test1 --> Moving normally 2 spaces
     // ** starts on space 1
     mechanics->addPlayer("test1", "red");
-    mechanics->getPlayers()[0].setLocation(1);
+    mechanics->getPlayers()[0]->setLocation(1);
     mechanics->movePlayer(distances[0]);
-    ASSERT_EQ(mechanics->getPlayers()[0].getLocation(), 3);
+    ASSERT_EQ(mechanics->getPlayers()[0]->getLocation(), 3);
 
     // ** test2 --> Moving over the end of the path
     // ** starts on path.size() - 2 (second to last spot), moves forward 2
     mechanics->addPlayer("test2", "yellow");
-    mechanics->getPlayers()[1].setLocation(mechanics->getPath()->getPath().size() - 2);
+    mechanics->getPlayers()[1]->setLocation(mechanics->getPath()->getPath().size() - 2);
     mechanics->movePlayer(distances[1]);
-    ASSERT_EQ(mechanics->getPlayers()[1].getLocation(), mechanics->getPath()->getPath().size() - 1);
+    ASSERT_EQ(mechanics->getPlayers()[1]->getLocation(), mechanics->getPath()->getPath().size() - 1);
 
 
     // ** test3 --> Moving backwards 4 spaces
     // ** turnBack is set to true
     mechanics->addPlayer("test3", "blue");
-    mechanics->getPlayers()[2].setTurnBack(true);
-    mechanics->getPlayers()[2].setLocation(5);
+    mechanics->getPlayers()[2]->setTurnBack(true);
+    mechanics->getPlayers()[2]->setLocation(5);
     mechanics->movePlayer(distances[2]);
-    ASSERT_EQ(mechanics->getPlayers()[2].getLocation(), 1);
+    ASSERT_EQ(mechanics->getPlayers()[2]->getLocation(), 1);
 
     // ** test4 --> Moving back into home
     // ** turnBack is set to true
     // ** will move back 6 spaces, starting on 5
     mechanics->addPlayer("test4", "blue");
-    mechanics->getPlayers()[3].setTurnBack(true);
-    mechanics->getPlayers()[3].setLocation(3);
+    mechanics->getPlayers()[3]->setTurnBack(true);
+    mechanics->getPlayers()[3]->setLocation(3);
     mechanics->movePlayer(distances[3]);
-    ASSERT_EQ(mechanics->getPlayers()[3].getLocation(), -1);
+    ASSERT_EQ(mechanics->getPlayers()[3]->getLocation(), -1);
 
 }
 
@@ -119,17 +121,17 @@ TEST_F (GameMechanicsTests, tesetReplaceTile){
     // ! Replace True
     mechanics->addPlayer("test1", "red");
     Tile *treasureTile = new Tile(1, 3);
-    mechanics->getPlayers()[0].setLocation(3);
-    mechanics->getPlayers()[0].addTreasure(treasureTile);
-    ASSERT_EQ(mechanics->getPlayers()[0].getNumTreasure(), 1);
+    mechanics->getPlayers()[0]->setLocation(3);
+    mechanics->getPlayers()[0]->addTreasure(treasureTile);
+    ASSERT_EQ(mechanics->getPlayers()[0]->getNumTreasure(), 1);
     mechanics->replaceTile(true);
-    ASSERT_EQ(mechanics->getPlayers()[0].getNumTreasure(), 0);
+    ASSERT_EQ(mechanics->getPlayers()[0]->getNumTreasure(), 0);
     ASSERT_EQ(mechanics->getPath()->getPath()[3], treasureTile);
 
 
     // ! Replace False
     mechanics->replaceTile(false);
-    ASSERT_EQ(mechanics->getPlayers()[0].getNumTreasure(), 1);
-    ASSERT_EQ(mechanics->getPlayers()[0].getTreasures()[0], treasureTile);
+    ASSERT_EQ(mechanics->getPlayers()[0]->getNumTreasure(), 1);
+    ASSERT_EQ(mechanics->getPlayers()[0]->getTreasures()[0], treasureTile);
     ASSERT_EQ(mechanics->getPath()->getPath()[3], nullptr);
 }

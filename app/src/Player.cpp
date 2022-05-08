@@ -87,7 +87,7 @@ Tile* Player::getLowestTreasure(){
     int minValue = 5;
     for(auto tile : treasure) {
         if(tile->getDots() < minValue) {
-            minValuie = tile->getDots();
+            minValue = tile->getDots();
             minValueTile = tile;
         }
     }
