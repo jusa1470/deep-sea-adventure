@@ -4,6 +4,8 @@
 Player::Player(std::string name_, std::string color_){
     this->name = name_;
     this->color = color_;
+    this->isSafe = false;
+    this->turnback = false;
     this->sdlSetup = SDLSetup::getInstance();
 }
 
@@ -56,11 +58,38 @@ void Player::removeAllTreasure(){
     treasure.clear();
 }
 
-void Player::setLocation(int i, int j){
-    std::get<0>(location) = i;
-    std::get<1>(location) = j;
+void Player::setLocation(int i){
+    location = i;
+}
+
+int Player::getLocation(){
+    return location;
 }
 
 void Player::setTurnBack(bool turnback_){
     this->turnback = turnback_;
+}
+
+bool Player::getTurnBack(){
+    return this->turnback;
+}
+
+void Player::setIsSafe(bool isSafe_){
+    this->isSafe = isSafe_;
+}
+
+bool Player::getIsSafe(){
+    return this->isSafe;
+}
+
+Tile* Player::getLowestTreasure(){
+    Tile* minValueTile;
+    int minValue = 5;
+    for(auto tile : treasure) {
+        if(tile->getDots() < minValue) {
+            minValue = tile->getDots();
+            minValueTile = tile;
+        }
+    }
+    return minValueTile;
 }

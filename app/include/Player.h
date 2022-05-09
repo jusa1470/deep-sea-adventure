@@ -22,16 +22,20 @@ class Player {
         std::vector<Tile*> getVaultTreasures();
         void removeTreasure(Tile* tile);
         void removeAllTreasure();
-        void setLocation(int i, int j);
-        std::tuple<int, int> getLocation();
+        Tile* getLowestTreasure();
+        void setLocation(int i);
+        int getLocation();
         void setTurnBack(bool turnback_);
+        bool getTurnBack();
+        void setIsSafe(bool isSafe_);
+        bool getIsSafe();
     
     private:
         std::string name;
         std::string color;
         std::vector<Tile *> treasure;
         std::vector<Tile *> vault;
-        std::tuple<int, int> location;
+        int location;
         bool turnback;
         bool isSafe;
         SDLSetup *sdlSetup;

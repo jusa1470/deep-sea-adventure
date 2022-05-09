@@ -7,9 +7,10 @@ class PathTests : public ::testing::Test {
     public:
         Path *path;
     void SetUp() {
-        path = Path::getInstance();
+        path = new Path();
     }
     void TearDown() {
+        delete path;
     }
 };
 
