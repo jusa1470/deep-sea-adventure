@@ -1,15 +1,19 @@
 #include <GameMechanics.h>
 #include <math.h>
 #include <vector>
+#include <typeinfo>
 
 GameMechanics::GameMechanics(){
     this->sdlSetup = SDLSetup::getInstance();
-    this->path = Path::getInstance();
+    this->path = new Path();
     this->currPlayerIndex = 0;
 }
 
 GameMechanics::~GameMechanics(){
     delete this->path;
+    for(auto player : this->players) {
+        delete player;
+    }
 }
 
 int GameMechanics::movePlayer(int distance){
@@ -17,10 +21,10 @@ int GameMechanics::movePlayer(int distance){
         distance *= -1;
     }
     int new_position = players[currPlayerIndex]->getLocation() + distance;
-    if(new_position > 0 && new_position < this->path->getPath().size()){
+    if(new_position > 0 && new_position < this->path->getPathSize()){
         players[currPlayerIndex]->setLocation(new_position);
-    } else if(new_position >= this->path->getPath().size()){
-        players[currPlayerIndex]->setLocation(this->path->getPath().size() - 1);
+    } else if(new_position >= this->path->getPathSize()){
+        players[currPlayerIndex]->setLocation(this->path->getPathSize() - 1);
     } else {
         players[currPlayerIndex]->setLocation(-1);
         players[currPlayerIndex]->setIsSafe(true);

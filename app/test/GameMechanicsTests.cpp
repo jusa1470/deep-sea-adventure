@@ -50,29 +50,24 @@ TEST_F(GameMechanicsTests, testMovePlayer){
 
     // ** test2 --> Moving over the end of the path
     // ** starts on path.size() - 2 (second to last spot), moves forward 2
-    mechanics->addPlayer("test2", "yellow");
-    mechanics->getPlayers()[1]->setLocation(mechanics->getPath()->getPath().size() - 2);
+    mechanics->getPlayers()[0]->setLocation(mechanics->getPath()->getPathSize() - 2);
     mechanics->movePlayer(distances[1]);
-    ASSERT_EQ(mechanics->getPlayers()[1]->getLocation(), mechanics->getPath()->getPath().size() - 1);
-
+    ASSERT_EQ(mechanics->getPlayers()[0]->getLocation(), mechanics->getPath()->getPathSize() - 1);
 
     // ** test3 --> Moving backwards 4 spaces
     // ** turnBack is set to true
-    mechanics->addPlayer("test3", "blue");
-    mechanics->getPlayers()[2]->setTurnBack(true);
-    mechanics->getPlayers()[2]->setLocation(5);
+    mechanics->getPlayers()[0]->setTurnBack(true);
+    mechanics->getPlayers()[0]->setLocation(5);
     mechanics->movePlayer(distances[2]);
-    ASSERT_EQ(mechanics->getPlayers()[2]->getLocation(), 1);
+    ASSERT_EQ(mechanics->getPlayers()[0]->getLocation(), 1);
 
     // ** test4 --> Moving back into home
     // ** turnBack is set to true
     // ** will move back 6 spaces, starting on 5
-    mechanics->addPlayer("test4", "blue");
-    mechanics->getPlayers()[3]->setTurnBack(true);
-    mechanics->getPlayers()[3]->setLocation(3);
+    mechanics->getPlayers()[0]->setTurnBack(true);
+    mechanics->getPlayers()[0]->setLocation(3);
     mechanics->movePlayer(distances[3]);
-    ASSERT_EQ(mechanics->getPlayers()[3]->getLocation(), -1);
-
+    ASSERT_EQ(mechanics->getPlayers()[0]->getLocation(), -1);
 }
 
 TEST_F(GameMechanicsTests, testRollRice){
@@ -114,7 +109,7 @@ TEST_F(GameMechanicsTests, testEndTurn){
     // ** Extra turn to make sure circle back
     mechanics->endTurn();
     int test6 = mechanics->getCurrPlayerIndex();
-    ASSERT_EQ(test6, 1);
+    ASSERT_EQ(test6, 0);
 }
 
 TEST_F (GameMechanicsTests, tesetReplaceTile){
