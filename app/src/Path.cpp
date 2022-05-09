@@ -1,9 +1,6 @@
 #include <Path.h>
 #include <iostream>
 
-Path* Path::instance{nullptr};
-std::mutex Path::mutex;
-
 Path::Path(){
     this->path = generateNewPath();
 }
@@ -14,15 +11,6 @@ Path::~Path(){
         this->path[i] = nullptr;
     }
     this->path.clear();
-}
-
-Path* Path::getInstance(){
-    mutex.lock();
-    if(instance == nullptr){
-        instance = new Path();
-    }
-    mutex.unlock();
-    return instance;
 }
 
 void Path::setPath(std::vector<Tile *> path_){
@@ -61,3 +49,7 @@ std::vector<Tile*> Path::generateNewPath(){
     }
     return path;
 }   
+
+int Path::getPathSize(){
+    return this->path.size();
+}

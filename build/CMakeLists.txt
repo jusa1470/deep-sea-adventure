@@ -6,7 +6,6 @@ find_package(GTest REQUIRED)
 set(CMAKE_CXX_STANDARD 11)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(sdl2_image REQUIRED  SDL2_image)
-pkg_check_modules(sdl2_ttf REQUIRED SDL2_ttf)
 
 file(GLOB TEST_SOURCES "../app/test/*.cpp")
 file(GLOB MAIN_SOURCES "../app/src/*.cpp")
