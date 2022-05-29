@@ -3,7 +3,6 @@
 #include <vector>
 
 GameMechanics::GameMechanics(){
-    this->sdlSetup = SDLSetup::getInstance();
     this->path = new Path();
     this->currPlayerIndex = 0;
 }
@@ -16,6 +15,7 @@ GameMechanics::~GameMechanics(){
 }
 
 int GameMechanics::movePlayer(int distance){
+    // TODO ADD SKIPPING PLAYER
     if(players[currPlayerIndex]->getTurnBack()){
         distance *= -1;
     }

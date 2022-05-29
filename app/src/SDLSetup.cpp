@@ -4,7 +4,8 @@ SDLSetup* SDLSetup::instance{nullptr};
 std::mutex SDLSetup::mutex;
 
 SDLSetup::SDLSetup(){
-    if(SDL_Init(SDL_INIT_VIDEO) != 0){
+    	
+    if(SDL_Init(SDL_INIT_VIDEO) < 0){
         logSDLError(std::cout, "SDL_Init");
         return;
     }
@@ -12,7 +13,7 @@ SDLSetup::SDLSetup(){
         logSDLError(std::cout, "IMG_Init");
         return;
     }
-    this->window = SDL_CreateWindow("Hello World", 100, 100, 100, 100, SDL_WINDOW_SHOWN);
+    this->window = SDL_CreateWindow("DSA", 100, 100, 800, 800, SDL_WINDOW_SHOWN);
     if (this->window == nullptr){
         logSDLError(std::cout, "CreateWindow");
         return;
@@ -42,7 +43,12 @@ SDL_Texture* SDLSetup::loadTexture(const std::string &file){
     SDL_Surface *surface = IMG_Load(file.c_str());
     if(surface){
         texture = SDL_CreateTextureFromSurface(this->renderer, surface);
+        surface->pixels = NULL;
         SDL_FreeSurface(surface);
+    }
+
+    if(!texture) {
+        logSDLError(std::cout, "LoadTexture: ");
     }
     return texture;
 }

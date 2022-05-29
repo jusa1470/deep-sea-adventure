@@ -27,7 +27,6 @@ class GameMechanics {
         std::vector<Player*> players;
         int currPlayerIndex;
         Path *path;
-        SDLSetup *sdlSetup;
 };
 
 #endif

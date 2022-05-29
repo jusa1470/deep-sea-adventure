@@ -13,8 +13,8 @@ class SDLSetup {
         SDLSetup(SDLSetup const&) = delete;
         void operator=(SDLSetup const&) = delete;
         SDL_Texture* loadTexture(const std::string &file);
-        void renderTexture(SDL_Texture* texture, SDL_Rect rect, SDL_Rect *clip=nullptr);
-        void renderTexture(SDL_Texture* texture, int x, int y, SDL_Rect *clip=nullptr);
+        void renderTexture(SDL_Texture* texture, SDL_Rect rect, SDL_Rect *clip);
+        void renderTexture(SDL_Texture* texture, int x, int y, SDL_Rect *clip);
         void logSDLError(std::ostream &os, const std::string &msg);
         SDL_Window* getWindow();
         SDL_Renderer* getRenderer();
